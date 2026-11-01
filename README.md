@@ -28,3 +28,11 @@ azure-cicd-portfolio/
 ├── app.py
 ├── test_app.py
 └── README.md
+## Run the Application
+
+```bash
+python app.py
+## Run the Tests
+
+```bash
+python -m unittest discover -s . -p "test_*.py" -v
