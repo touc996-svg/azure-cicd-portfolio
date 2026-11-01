@@ -8,3 +8,4 @@ def get_status():
 
 if __name__ == "__main__":
     print(get_status())
+# CI/CD pipeline test
