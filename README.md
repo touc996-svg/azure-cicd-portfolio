@@ -1,58 +1,30 @@
-name: Python CI Pipeline
+# Azure CI/CD Portfolio
 
-on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
-
-permissions:
-  contents: read
-
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-
-      - name: Run automated tests
-        run: python -m unittest discover -s . -p "test_*.py" -v
-Azure CI/CD Portfolio
-Project Overview
+## Project Overview
 This project demonstrates a basic Continuous Integration (CI) pipeline using Python and GitHub Actions.
+
 The goal is to automate code testing whenever changes are pushed to the repository or a pull request is created.
-Technologies Used
-Python 3.12
-GitHub Actions
-Git
-GitHub
-Unit Testing
-How It Works
-A developer pushes code to the main branch.
-GitHub Actions automatically starts the CI workflow.
-The workflow sets up Python 3.12.
-Automated unit tests run using Python’s unittest framework.
-GitHub reports whether the tests passed or failed.
-Project Structure
+
+## Technologies Used
+- Python 3.12
+- GitHub Actions
+- Git
+- GitHub
+- Unit Testing
+
+## How It Works
+1. A developer pushes code to the main branch.
+2. GitHub Actions automatically starts the CI workflow.
+3. The workflow sets up Python 3.12.
+4. Automated unit tests run using Python's unittest framework.
+5. GitHub reports whether the tests passed or failed.
+
+## Project Structure
+```text
 azure-cicd-portfolio/
 ├── .github/
-│   └── workflows/
-│       └── ci.yml
+│   └── workflows/
+│       └── ci.yml
 ├── app.py
 ├── test_app.py
 └── README.md
-Run the Application
-python app.py
-Run the Tests
-python -m unittest discover -s . -p "test_*.py" -v
-CI Pipeline Status
-The GitHub Actions workflow has successfully executed, and the automated tests have passed.
-Project Purpose
-This project demonstrates practical experience with automated testing, CI workflows, Python, and GitHub Actions as part of a cloud and DevOps portfolio.
-Note: This project currently demonstrates CI automation through GitHub Actions. It does not represent an actual deployment to Microsoft Azure.
