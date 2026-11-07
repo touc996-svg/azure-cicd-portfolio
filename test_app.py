@@ -1,20 +1,22 @@
-import unittest
-from app import get_status
+from app import app
 
+def test_home_page():
+    response = app.test_client().get("/")
+    assert response.status_code == 200
+    assert b"Azure CI/CD Portfolio" in response.data
 
-class TestApp(unittest.TestCase):
+def test_health():
+    response = app.test_client().get("/health")
+    assert response.status_code == 200
+    assert response.json["status"] == "healthy"
 
-    def test_project_status(self):
-        result = get_status()
-        self.assertEqual(result["status"], "Running")
+def test_status():
+    response = app.test_client().get("/api/status")
+    assert response.status_code == 200
+    assert response.json["status"] == "operational"
+    assert response.json["project"] == "Azure CI/CD Portfolio"
 
-    def test_project_name(self):
-        result = get_status()
-        self.assertEqual(
-            result["project"],
-            "Azure CI/CD Portfolio"
-        )
-
-
-if __name__ == "__main__":
-    unittest.main()
+def test_environment(monkeypatch):
+    monkeypatch.setenv("APP_ENV", "production")
+    response = app.test_client().get("/api/status")
+    assert response.json["environment"] == "production"

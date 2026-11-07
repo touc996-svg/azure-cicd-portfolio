@@ -1,33 +1,38 @@
-Azure CI/CD Portfolio
-Project Overview
-This project demonstrates a basic Continuous Integration (CI) pipeline using Python and GitHub Actions.
-The goal is to automate code testing whenever changes are pushed to the repository or a pull request is created.
-Technologies Used
-Python 3.12
-GitHub Actions
-Git
-GitHub
-Unit Testing
-How It Works
-A developer pushes code to the main branch.
-GitHub Actions automatically starts the CI workflow.
-The workflow sets up Python 3.12.
-Automated unit tests run using Python’s unittest framework.
-GitHub reports whether the tests passed or failed.
-Project Structure
-azure-cicd-portfolio/
-├── .github/
-│   └── workflows/
-│       └── ci.yml
-├── app.py
-├── test_app.py
-└── README.md
-Run the Application
-python app.py
-Run the Tests
-python -m unittest discover -s . -p "test_*.py" -v
-CI Pipeline Status
-The GitHub Actions workflow has successfully executed, and the automated tests have passed.
-Project Purpose
-This project demonstrates practical experience with automated testing, CI workflows, Python, and GitHub Actions as part of a cloud and DevOps portfolio.
-Note: This project currently demonstrates CI automation through GitHub Actions. It does not represent an actual deployment to Microsoft Azure.
+# Azure CI/CD Portfolio
+
+A Flask application demonstrating automated testing and deployment preparation for Microsoft Azure App Service.
+
+## Technology
+- Python 3.12
+- Flask and Gunicorn
+- pytest
+- GitHub Actions
+- Azure App Service
+- Microsoft Entra OIDC authentication
+
+## Application endpoints
+- / — Application dashboard
+- /health — Health check
+- /api/status — Application status API
+
+## Local setup
+Create a virtual environment, install requirements.txt, and run app.py.
+
+## Testing
+Run pytest -v.
+
+Four automated tests currently pass.
+
+## GitHub Actions
+- ci.yml runs automated tests on pushes and pull requests.
+- azure-deploy.yml provides manual deployment using OIDC.
+
+## Azure deployment requirements
+GitHub secrets: AZURE_CLIENT_ID, AZURE_TENANT_ID, AZURE_SUBSCRIPTION_ID.
+
+GitHub variables: AZURE_WEBAPP_NAME, AZURE_RESOURCE_GROUP.
+
+An active Azure subscription, an existing App Service, and a correctly configured federated identity are required.
+
+## Current status
+Application and CI implemented. Azure deployment workflow prepared, but deployment has not yet been performed.
